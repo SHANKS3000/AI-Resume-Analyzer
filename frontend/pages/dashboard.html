@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | ResumeAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body class="dashboard-body">
+    <div class="dashboard-layout">
+      <aside class="sidebar">
+        <div class="brand-wrap">
+          <a href="/" class="brand">ResumeAI</a>
+        </div>
+        <nav class="side-nav">
+          <a href="#" class="active">Dashboard</a>
+          <a href="#analyze">Analyze Resume</a>
+          <a href="#history">Analysis History</a>
+          <a href="#profile">Profile</a>
+          <button id="logoutBtn" class="nav-logout" type="button">Logout</button>
+        </nav>
+      </aside>
+
+      <main class="dashboard-main">
+        <header class="dashboard-header">
+          <div>
+            <p class="eyebrow">Overview</p>
+            <h1>My Dashboard</h1>
+          </div>
+          <div id="userBadge" class="user-badge">Loading user...</div>
+        </header>
+
+        <section class="stats-grid">
+          <article class="stat-card card">
+            <span>Total Resumes</span>
+            <strong id="totalResumes">0</strong>
+          </article>
+          <article class="stat-card card">
+            <span>Analyses Completed</span>
+            <strong id="totalAnalyses">0</strong>
+          </article>
+          <article class="stat-card card">
+            <span>Average ATS Score</span>
+            <strong id="avgAts">0</strong>
+          </article>
+          <article class="stat-card card">
+            <span>Best Match Score</span>
+            <strong id="bestMatch">0</strong>
+          </article>
+        </section>
+
+        <section class="dashboard-panels">
+          <div class="panel card">
+            <div class="section-header">
+              <h2>Recent Analysis</h2>
+            </div>
+            <div id="recentAnalysis" class="analysis-list"></div>
+          </div>
+
+          <div class="panel card">
+            <div class="section-header">
+              <h2>Skill Overview</h2>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="skillsChart"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <section id="analyze" class="card analysis-section">
+          <div class="section-header">
+            <h2>Analyze Resume</h2>
+          </div>
+
+          <form id="resumeUploadForm" class="upload-form">
+            <div class="upload-box" id="uploadBox">
+              <input type="file" id="resumeInput" accept=".pdf,.docx" hidden />
+              <p>Drag and drop a resume here</p>
+              <button type="button" class="btn btn-secondary" id="selectFileBtn">Choose file</button>
+            </div>
+            <div id="selectedFileInfo" class="file-info hidden"></div>
+            <div class="form-grid">
+              <label>
+                <span>Target Role</span>
+                <select id="targetRole">
+                  <option value="Software Developer">Software Developer</option>
+                  <option value="Full Stack Developer">Full Stack Developer</option>
+                  <option value="Frontend Developer">Frontend Developer</option>
+                  <option value="Backend Developer">Backend Developer</option>
+                  <option value="Data Scientist">Data Scientist</option>
+                  <option value="Data Analyst">Data Analyst</option>
+                  <option value="AI/ML Engineer">AI/ML Engineer</option>
+                  <option value="DevOps Engineer">DevOps Engineer</option>
+                  <option value="Cybersecurity Engineer">Cybersecurity Engineer</option>
+                </select>
+              </label>
+              <label class="full-width">
+                <span>Paste Job Description</span>
+                <textarea id="jobDescription" rows="6" placeholder="Paste the job description here..."></textarea>
+              </label>
+            </div>
+            <button class="btn btn-primary" type="submit">Upload and Analyze</button>
+          </form>
+
+          <div id="extractedTextPreview" class="preview-box hidden">
+            <h3>Extracted Resume Text Preview</h3>
+            <pre id="resumePreviewText"></pre>
+          </div>
+        </section>
+
+        <section id="history" class="card history-section">
+          <div class="section-header">
+            <h2>Saved Analyses</h2>
+          </div>
+          <div id="historyTable" class="history-table"></div>
+        </section>
+
+        <section id="profile" class="card profile-section">
+          <div class="section-header">
+            <h2>Profile</h2>
+          </div>
+          <div id="profileInfo" class="profile-info"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script src="../js/app.js"></script>
+  </body>
+</html>

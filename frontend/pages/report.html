@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis Report | ResumeAI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body class="report-page">
+    <div class="container report-container">
+      <header class="report-header">
+        <div>
+          <a href="/dashboard" class="back-link">← Back to dashboard</a>
+          <h1>Detailed Analysis Report</h1>
+        </div>
+        <div class="report-actions">
+          <button class="btn btn-secondary" type="button" id="downloadReportBtn">Download Report</button>
+          <button class="btn btn-primary" type="button" id="analyzeAgainBtn">Analyze Again</button>
+        </div>
+      </header>
+
+      <main id="reportContent" class="report-content card"></main>
+    </div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/report.js"></script>
+    <script src="../js/app.js"></script>
+  </body>
+</html>
